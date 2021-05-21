@@ -1,0 +1,3 @@
+#This script will export a CSV of all active directory users and the properties specified
+
+Get-Aduser -Filter 'enabled -eq "true"' -Properties * | select samAccountName, distinguishedName, homeDirectory, homeDrive, employeeID, @{name="mailNickname";expression={$_.mailNickname -join ","}}, physicalDeliveryOfficeName, @{name="memberOf";expression={$_.memberOf -join ","}}, @{name="proxyAddresses";expression={$_.proxyAddresses -join ","}}, @{name="showInAddressBook";expression={$_.showInAddressBook -join ";"}}, telephoneNumber, title | Export-Csv c:\temp\UserExport.csv
