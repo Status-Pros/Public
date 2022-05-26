@@ -17,14 +17,14 @@ if ($clearCache -eq "Y"){
     # Clearing Teams Disk Cache
 
     try{
-        Get-ChildItem -Path $env:APPDATA\"Microsoft\teams\application cache\cache" | Remove-Item -Confirm:$false
-        Get-ChildItem -Path $env:APPDATA\"Microsoft\teams\blob_storage" | Remove-Item -Confirm:$false
-        Get-ChildItem -Path $env:APPDATA\"Microsoft\teams\databases" | Remove-Item -Confirm:$false
-        Get-ChildItem -Path $env:APPDATA\"Microsoft\teams\cache" | Remove-Item -Confirm:$false
-        Get-ChildItem -Path $env:APPDATA\"Microsoft\teams\gpucache" | Remove-Item -Confirm:$false
-        Get-ChildItem -Path $env:APPDATA\"Microsoft\teams\Indexeddb" | Remove-Item -Confirm:$false
-        Get-ChildItem -Path $env:APPDATA\"Microsoft\teams\Local Storage" | Remove-Item -Confirm:$false
-        Get-ChildItem -Path $env:APPDATA\"Microsoft\teams\tmp" | Remove-Item -Confirm:$false
+        Get-ChildItem -Path $env:APPDATA\"Microsoft\teams\application cache\cache" | Remove-Item -recurse -Confirm:$false
+        Get-ChildItem -Path $env:APPDATA\"Microsoft\teams\blob_storage" | Remove-Item -recurse -Confirm:$false
+        Get-ChildItem -Path $env:APPDATA\"Microsoft\teams\databases" | Remove-Item -recurse -Confirm:$false
+        Get-ChildItem -Path $env:APPDATA\"Microsoft\teams\cache" | Remove-Item -recurse -Confirm:$false
+        Get-ChildItem -Path $env:APPDATA\"Microsoft\teams\gpucache" | Remove-Item -recurse -Confirm:$false
+        Get-ChildItem -Path $env:APPDATA\"Microsoft\teams\Indexeddb" | Remove-Item -recurse -Confirm:$false
+        Get-ChildItem -Path $env:APPDATA\"Microsoft\teams\Local Storage" | Remove-Item -recurse -Confirm:$false
+        Get-ChildItem -Path $env:APPDATA\"Microsoft\teams\tmp" | Remove-Item -recurse -Confirm:$false
         
     }catch{
         echo $_
@@ -73,5 +73,7 @@ if ($clearCache -eq "Y"){
 
     # Cleanup Complete... Launching Teams
     Start-Process -FilePath $env:LOCALAPPDATA\Microsoft\Teams\current\Teams.exe
-    Stop-Process -Id $PID
+    
 }
+
+
