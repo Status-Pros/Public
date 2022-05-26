@@ -71,8 +71,7 @@ if ($clearCache -eq "Y"){
         echo $_
     }
 
-    # Cleanup Complete... Launching Teams
-    Start-Process -FilePath $env:LOCALAPPDATA\Microsoft\Teams\current\Teams.exe -WindowStyle Minimized
+    # Cleanup Complete...
     
 }
 
